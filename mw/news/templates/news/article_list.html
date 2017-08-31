@@ -14,20 +14,12 @@
 
 {%  block content %}
     <table class="table table-bordered text-center">
-	    <thead>
-		    <tr>
-		      <th class="text-center">Their offer id</th>
-              <th class="text-center">name</th>
-		      <th class="text-center">afftrack_id</th>
-		      <th class="text-center">active</th>
-		    </tr>
-	  	</thead>
 	  	<tbody>
 	  	  	{% for article in object_list %}
+                <tr>
+                    <td><img src="{{ article.picture_url }}" width="100px"></td>
     				<td><a href="/articles/{{ article.id }}/">{{ article.title }}</a></td>
-                    <td>{{ article.url }}</td>
-    				<!--<td>{{ offer.afftrack_id }}</td>-->
-                    <!--<td><span {% if offer.active  %} class="glyphicon glyphicon-ok" style="color:green"{% else %} class="glyphicon glyphicon-remove" style="color:red"{% endif %}></span></td>-->
+                    <!--<td>{{ article.url }}</td>-->
     			</tr>
     		{% endfor %}
     	</tbody>
@@ -47,12 +39,6 @@
             </span>
         </div>
     {% endif %}
-        <!--<script type="text/javascript">-->
-            <!--$(function () {-->
-                <!--$('#datetimepicker1').datetimepicker();-->
-                <!--$('#datetimepicker2').datetimepicker();-->
-            <!--});-->
-        <!--</script>-->
     </div>
 </div>
 {% endblock %}

@@ -45,8 +45,13 @@ class RuNewsSpider(scrapy.Spider):
                 try:
                     resp = requests.get(URL+link[1])
                     text = ''.join(scrapy.Selector(text=resp.content).xpath(
-                        '/html/body/div/div[1]/div[8]/div/div/div[2]/div/p/text()').extract()[2:-1])
-                    Article(url=URL+link[1], title=link[0], body=text).save()
+                        '/html/body/div/div[1]/div[8]/div/div/div[2]/div/p'
+                        ).extract()[:-2]).replace('img src="/images','img src="https://bits.media/images')
+                    picture = scrapy.Selector(text=resp.content).xpath(
+                        '/html/body/div/div[1]/div[8]/div/div/div[2]/div/p/img/@src').extract_first()
+                    if 'bits.media' not in picture:
+                        picture = 'https://bits.media' + picture
+                    Article(url=URL+link[1], title=link[0], body=text, picture_url=picture, public=True).save()
                 except Exception as e:
                     print(e)
                     continue
