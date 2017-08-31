@@ -1,0 +1,31 @@
+label {
+  width:200px;
+  display: inline-block;
+}
+input {
+  width:150px;
+  display: inline-block;
+}
+select {
+  width:150px;
+  display: inline-block;
+}
+.btn{
+	width:300px;
+	display: inline-block;
+}
+
+ul.dropdown-menu {
+    width: 100%
+}
+
+.multiselect-container label.checkbox {
+    padding: 3px 10px;
+}
+
+.multiselect-container>li>a>label>input[type=checkbox]{
+    width: 30px;
+    margin-left: 0;
+    margin-right: 0;
+}
+

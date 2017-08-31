@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Offers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/prodject.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"/>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    {% block extrahead %}{% endblock %}
+  </head>
+  <body>
+  <div class="container-fluid">
+  <nav class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+      <li><a href='/offer/'>Offer</a></li>
+      <li><a href='/affiliates/mobile'>Advertisers mobile</a></li>
+      <li><a href='/affiliates/nonmobile'>Advertisers nonmobile</a></li>
+      <li><a href="/conversion/">Conversion</a></li>
+      <li><a href="/handmade/">Handmade</a></li>
+      <li><a href="/blockedapps/">Blocked Apps</a></li>
+      <li><a href="/merchantfeed/">Merchant's feeds</a></li>
+      <li><a href="/tickets/list">Tickets</a></li>
+      <li><a href="/merchstats/">Merchant Stats</a></li>
+      <li><a href="/affstats/">Affilitest Stats</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a>Welcome, {{ request.user }}</a></li>
+      <li><a href="/accounts/logout/">Log out</a></li>
+    </ul>
+    
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+   </body>
+   {% block script %}{% endblock %}
+    </div>
+</html>

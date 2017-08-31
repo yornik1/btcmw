@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extrahead %}
+<script type="text/javascript" src="{% static 'js/bootstrap-multiselect.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/bootstrap-multiselect.css' %}" type="text/css"/>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#merchant_select').multiselect();
+    });
+</script>
+<script src="{% static 'js/ajax.js' %}"></script>
+{% endblock %}
+
+{%  block content %}
+    <table class="table table-bordered text-center">
+	    <thead>
+		    <tr>
+		      <th class="text-center">Their offer id</th>
+              <th class="text-center">name</th>
+		      <th class="text-center">afftrack_id</th>
+		      <th class="text-center">active</th>
+		    </tr>
+	  	</thead>
+	  	<tbody>
+	  	  	{% for article in object_list %}
+    				<td><a href="/articles/{{ article.id }}/">{{ article.title }}</a></td>
+                    <td>{{ article.url }}</td>
+    				<!--<td>{{ offer.afftrack_id }}</td>-->
+                    <!--<td><span {% if offer.active  %} class="glyphicon glyphicon-ok" style="color:green"{% else %} class="glyphicon glyphicon-remove" style="color:red"{% endif %}></span></td>-->
+    			</tr>
+    		{% endfor %}
+    	</tbody>
+	</table>
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/article/?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/article/?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+        <!--<script type="text/javascript">-->
+            <!--$(function () {-->
+                <!--$('#datetimepicker1').datetimepicker();-->
+                <!--$('#datetimepicker2').datetimepicker();-->
+            <!--});-->
+        <!--</script>-->
+    </div>
+</div>
+{% endblock %}
