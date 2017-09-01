@@ -41,7 +41,7 @@ class RuNewsSpider(scrapy.Spider):
                  ) for i in
                 range(2, 102)]
         for link in news:
-            if not Article.objects.filter(url=URL+link[1]):
+            if not Article.objects.filter(url=URL+link[1]):   # response.urljoin
                 try:
                     resp = requests.get(URL+link[1])
                     text = ''.join(scrapy.Selector(text=resp.content).xpath(
