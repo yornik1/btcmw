@@ -1,0 +1,7 @@
+beautifulsoup4==4.6.0
+bs4==0.0.1
+celery==4.1.0
+Django==1.11.4
+requests==2.18.4
+Scrapy==1.4.0
+scrapy-djangoitem==1.1.1

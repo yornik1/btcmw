@@ -2,7 +2,6 @@ import scrapy
 from bs4 import BeautifulSoup
 from news.models import Article
 import requests # Todo with scrapy request
-URL = 'https://bits.media'
 
 
 class NewsBTCSpider(scrapy.Spider):
@@ -18,7 +17,6 @@ class NewsBTCSpider(scrapy.Spider):
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        # page = response.url.split('SIZEN_1')[0][-2] if response.url.split('SIZEN_1')[0][-2].isdigit() else 1
         news = list(zip(scrapy.Selector(text=response.body).xpath('//*/div/div/header/h2/a[1]/text()').extract(),
                 scrapy.Selector(text=response.body).xpath('//*/div/div/header/h2/a[1]/@href').extract()))
         for link in news:
